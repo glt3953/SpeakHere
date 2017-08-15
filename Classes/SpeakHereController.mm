@@ -149,6 +149,10 @@ char *OSTypeToStr(char *buf, OSType t)
 	if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
 	{
 		[self stopRecord];
+        
+        #ifdef CYCLE_RECORD
+            [self record:nil];
+        #endif
 	}
 	else // If we're not recording, start.
 	{
@@ -164,6 +168,10 @@ char *OSTypeToStr(char *buf, OSType t)
 		
 		// Hook the level meter up to the Audio Queue for the recorder
 		[lvlMeter_in setAq: recorder->Queue()];
+        
+        #ifdef CYCLE_RECORD
+            [self performSelector:@selector(record:) withObject:nil afterDelay:10];
+        #endif
 	}	
 }
 

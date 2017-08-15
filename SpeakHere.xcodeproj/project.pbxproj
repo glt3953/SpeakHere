@@ -265,6 +265,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 3KQG33P93J;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SpeakHere" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -365,6 +370,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 3KQG33P93J;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -380,6 +386,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 3KQG33P93J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SpeakHere_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;

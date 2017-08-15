@@ -54,6 +54,7 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 #import "AQPlayer.h"
 #import "AQRecorder.h"
 
+//#define CYCLE_RECORD //控制循环录音的宏
 
 @interface SpeakHereController : NSObject {
 

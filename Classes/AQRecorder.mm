@@ -192,12 +192,19 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 		SetupAudioFormat(kAudioFormatLinearPCM);
 		
 		// create the queue
-		XThrowIfError(AudioQueueNewInput(
-									  &mRecordFormat,
-									  MyInputBufferHandler,
-									  this /* userData */,
-									  NULL /* run loop */, NULL /* run loop mode */,
-									  0 /* flags */, &mQueue), "AudioQueueNewInput failed");
+//		XThrowIfError(AudioQueueNewInput(&mRecordFormat, MyInputBufferHandler, this /* userData */, NULL /* run loop */, NULL /* run loop mode */, 0 /* flags */, &mQueue), "AudioQueueNewInput failed");
+        OSStatus errStatus = AudioQueueNewInput(&mRecordFormat,
+                                          MyInputBufferHandler,
+                                           this /* userData */,
+                                           NULL /* run loop */,
+                                      NULL /* run loop mode */,
+                                                 0 /* flags */,
+                                                      &mQueue);
+        if (errStatus != noErr) {
+            #if DEBUG
+                NSLog(@"AudioQueueNewInput failed: %d", (int)errStatus);
+            #endif
+        }
 		
 		// get the record format back from the queue's audio converter --
 		// the file may require a more specific stream description than was necessary to create the encoder.
@@ -240,7 +247,6 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 	catch (...) {
 		fprintf(stderr, "An unknown error occurred\n");;
 	}	
-
 }
 
 void AQRecorder::StopRecord()
